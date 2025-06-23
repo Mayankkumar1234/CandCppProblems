@@ -25,6 +25,27 @@ int isFull(struct Stack *ptr){
   }
   return 0;
 }
+
+void push(struct Stack *ptr , int data){
+  if(isFull(ptr)){
+    printf("Stack is Full cannot add more elements into it...");
+  }else{
+    ptr->top++; 
+    ptr->arr[ptr->top] = data;
+  }
+}
+
+int pop(struct Stack *ptr){
+  if(isEmpty(ptr)){
+    printf("Stack is empty cannot pop elements from it...");
+    return -1;
+  }else{
+   int data = ptr->arr[ptr->top];
+    
+    ptr->top--; 
+    return data;
+  }
+}
 int main(){
   // struct Stack S;
   //   S.size = 80;
@@ -37,10 +58,19 @@ int main(){
      s->size = 80;
      s->top = -1;
      s->arr = (int *)malloc(s->size*sizeof(int));
+     s->arr[0] = 21;
+     s->top++;
      if(isEmpty(s)){
       printf("Stack is Empty");
      }else{
       printf("Stack is not Empty");
      }
+
+     push(s, 22);
+      push(s, 23);
+      int valP = pop(s);
+
+      printf(valP);
+      return 0;
 
 }
